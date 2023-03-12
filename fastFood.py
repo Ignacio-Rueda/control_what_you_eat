@@ -21,7 +21,6 @@ def Mcdonalds():
     plt.rc('font',**font)
     plt.title("Nutritional information (Mcdonalds)")
     plt.xlabel("Calories")
-
     plt.xticks()
     plt.ylabel("Menu")
     
@@ -46,10 +45,6 @@ def Mcdonalds():
     values = values.to_numpy().tolist()
     #Utilizamos iloc para acceder a los datos a través de la posición númerica de las filas y las columnas
     position=Mcdonalds.loc[Mcdonalds['position']==1,"vit_c"].iloc[0]
-    print(position)
-   
-    print(Mcdonalds)
-    print(position)
 
     headings=["Position","Menu","Calories"]
 
