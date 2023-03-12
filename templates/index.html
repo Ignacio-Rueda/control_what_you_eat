@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <title>APIFLASK+PANDAS</title>
+</head>
+<body>
+    {% if value_incorrect %}
+        <p>EL VALOR INTRODUCIDO NO ES CORRECTO</p>
+    {% endif %}
+
+    {% if show_form %}
+        <div id="formulario">
+                <h1>SELECCIONE EL RESTAURANTE AL QUE VA A COMER PARA CONOCER LA INFORMACIÓN NUTRICIONAL DE SUS MENÚS</h1>
+            <form action="/fastfood" method="GET">
+                <select id="fastfood" name="restaurant">
+                    <option value="Mcdonalds">MCDONALDS</option>
+                    <option value="Burguer king">BURGUER KING</option>
+                </select>
+                <br/>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    {% endif %}
+
+    {% if show_table %}
+        <h1>Lista ordenada de los menús en función de sus calorías</h1>
+        <table>
+            <tr>
+                {%for header in headings %}
+                    <th>{{header}}</th>
+                {%endfor%}
+            </tr>
+            {% for row in data %}
+                <tr>
+                    {%for cell in row%}
+                        <td>{{cell}}</td>
+                        {%endfor%}
+                </tr>
+            {% endfor %}
+        </table>
+        <h2>SI NECESITAS CONOCER MÁS VALORES NUTRICIONALES, INTRODÚZCALOS EN EL SIGUIENTE CAMPO</h2>
+        <form>
+            <input id="positionMenu" placeholder="Position">
+            <br/>
+            <button type="submit">Buscar</button>
+        </form>
+    {% endif %}
+
+</body>
+</html>
